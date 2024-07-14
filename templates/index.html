@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Chatbot</title>
+    <style>
+        body {
+             font-family: Arial, sans-serif;
+             color: white;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-image: url('static/1.webp');
+            background-size: cover;
+            background-repeat: no-repeat;   
+        }
+        .header {
+        position:fixed;
+        top:0%;
+        width: 100%;
+        left: 20px;
+        display: flex;
+        justify-content:left;
+        align-items: center;
+        }
+
+        #bg-video {    
+            position: fixed;
+            top: 0%;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            object-fit: cover;
+         }
+
+        .image {
+            width: 50px;
+            height: auto;
+            border-radius: 20%;
+        }
+
+        .container {
+            font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            color:white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: -19px 10px 100px rgba(1,1,1,1);
+            text-align: center;
+            animation: fadeIn 1s;
+        }
+
+        .result {          
+            margin-top: 2px;
+        }
+
+        .result a {
+            background-color:white;
+            padding: 10px;
+            border-radius: 8px;
+            box-shadow: -19px 10px 100px rgba(1,1,1,1);
+            text-align: center;
+            animation: fadeIn 1s;
+            margin-top: 2px;
+            display: block;
+            margin: 5px 0;
+            text-decoration: none;            
+            color: #007BFF;
+        }
+
+        .options, .custom-query, .web-cloner, .result-cont {
+            font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            color:white;
+            padding: 10px;
+            border-radius: 8px;
+            box-shadow: -19px 10px 100px rgba(1,1,1,1);
+            text-align: center;
+            animation: fadeIn 2s;
+            margin-top: 10px;
+        }
+
+        .button {
+            padding: 1%;
+            background-color: white;
+            border-radius: 5px;
+            color: black;
+        }
+
+        .options button, .custom-query button, .web-cloner button {
+            font-family: 'Georgia', serif;
+            margin: 5px;
+            
+            padding: 10px;
+            background-color: white;
+            
+            border-radius: 40px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .options button.selected, .custom-query button.selected, .web-cloner button.selected {
+            background-color:rgb(19, 57, 146);
+            opacity:100% ;
+            color: white;
+        }
+
+        .options {            
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+        }
+
+        .custom-query input, .web-cloner input {
+            font-style: oblique;
+            width: 300px;
+            padding: 10px;            
+            border-radius: 8px;
+            background-color: #f0f0f0;
+            margin-right: 10px;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+    </style>
+</head>
+<body>
+    <video autoplay muted loop id="bg-video">
+        <source src="static/8.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+    <div class="header">
+        <img src="static/21.gif" alt="Logo 1" class="image top-left" > 
+        <h1>Quicbot<a>.in</a></h1>
+        
+        
+    </div>  
+   
+    <div class="container"> 
+        <br>
+        <br>
+        <br>
+        <h2>Choose category</h2>
+        <strong class="options " >
+            <button onclick="selectCategory(this, 'Website Designing')">Website Designing</button>
+            <button onclick="selectCategory(this, 'Programming')">Programming</button>
+            <button onclick="selectCategory(this, 'Graphic Design')">Graphic Design</button>
+            <button onclick="selectCategory(this, 'Digital Marketing')">Digital Marketing</button>
+            <button onclick="selectCategory(this, 'Data Science')">Data Science</button>
+            <button onclick="selectCategory(this, 'Cyber Security')">Cyber Security</button>
+            <button onclick="selectCategory(this, 'AI & Machine Learning')">AI & Machine Learning</button>
+            <button onclick="selectCategory(this, 'Cloud Computing')">Cloud Computing</button>
+            <button onclick="selectCategory(this, 'DevOps')">DevOps</button>
+            <button onclick="selectCategory(this, 'Mobile App Development')">Mobile App Development</button>
+            <button onclick="selectCategory(this, 'Blockchain')">Blockchain</button>
+            <button onclick="selectCategory(this, 'Internet of Things (IoT)')">Internet of Things (IoT)</button>
+        </strong>
+        <h2>Choose options </h2>
+        <div id="details" class="options" style="display: none;"></div>
+        
+        <div class="custom-query">
+            <h2>or Custom Query</h2>
+            <a>Give your own search</a>
+            <br>
+            <input type="text" id="custom_query" placeholder="Enter your query" onkeydown="if(event.key === 'Enter') askCustomQuery()">
+            <button onclick="askCustomQuery()">Search</button>
+        </div>
+        
+        <div class="web-cloner">
+            <h2>Web Cloner</h2>
+            <a>This clones the website from given URL</a>
+            <br>
+            <input type="text" id="url" placeholder="Enter URL" onkeydown="if(event.key === 'Enter') cloneWebsite()">
+            <button onclick="cloneWebsite()">Clone</button>
+            
+        </div>
+        <div class="result-cont">
+            <h2>Results</h2>
+            
+       
+        <div class="result" id="result"></div>
+        <p><strong>Developed by:</strong> <a class="button color:white" href="https://github.com/Dev-0618/" >Dev-0618</a></p>
+    </div>
+
+    <script>
+        let selectedCategory = '';
+
+        function selectCategory(button, category) {
+            selectedCategory = category;
+            document.querySelectorAll('.options button').forEach(btn => btn.classList.remove('selected'));
+            button.classList.add('selected');
+            const detailsDiv = document.getElementById('details');
+            detailsDiv.style.display = 'grid';
+            detailsDiv.innerHTML = `
+                <button onclick="askQuestion(this, 'Free Tools')">Free Tools</button>
+                <button onclick="askQuestion(this, 'Tutorials')">Tutorials</button>
+                <button onclick="askQuestion(this, 'Resources')">Resources</button>
+                <button onclick="askQuestion(this, 'Courses')">Courses</button>
+                <button onclick="askQuestion(this, 'News')">News</button>
+            `;
+        }
+
+        function askQuestion(button, detail) {
+            document.querySelectorAll('#details button').forEach(btn => btn.classList.remove('selected'));
+            button.classList.add('selected');
+            fetch('/ask', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ category: selectedCategory, detail: detail })
+            })
+            .then(response => response.json())
+            .then(data => {
+                const resultDiv = document.getElementById('result');
+                resultDiv.innerHTML = '';
+                if (data.answer) {
+                    data.answer.forEach(item => {
+                        const link = document.createElement('a');
+                        link.href = item.link;
+                        link.textContent = item.title;
+                        resultDiv.appendChild(link);
+                    });
+                } else {
+                    resultDiv.textContent = data.error || 'No results found';
+                }
+            });
+        }
+
+        function askCustomQuery() {
+            const customQuery = document.getElementById('custom_query').value;
+            fetch('/ask', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ custom_query: customQuery })
+            })
+            .then(response => response.json())
+            .then(data => {
+                const resultDiv = document.getElementById('result');
+                resultDiv.innerHTML = '';
+                if (data.answer) {
+                    data.answer.forEach(item => {
+                        const link = document.createElement('a');
+                        link.href = item.link;
+                        link.textContent = item.title;
+                        resultDiv.appendChild(link);
+                    });
+                } else {
+                    resultDiv.textContent = data.error || 'No results found';
+                }
+            });
+        }
+
+        function cloneWebsite() {
+            const url = document.getElementById('url').value;
+            fetch('/clone', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ url: url })
+            })
+            .then(response => response.json())
+            .then(data => {
+                const resultDiv = document.getElementById('result');
+                resultDiv.innerHTML = data.status || data.error;
+            });
+        }
+    </script>
+</body>
+</html>
