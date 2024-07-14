@@ -17,6 +17,7 @@ run the following command in your cmd or terminal
 (required python)
 
 $pip install -r requirements.txt
+
 $python app.py
 
 and that's it your done 
