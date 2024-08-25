@@ -1,38 +1,44 @@
-**Quicbot** _is a python and flask based tool/chatbot used to reduce your research time on google, it fetches the top 10 results with top visits_
-_there are set of category avail with the required options acc to your will_
-_Not satisfied ?? not a problem you can give your own prompt it does the same_ 
 
+# **Quicbot**
 
-also additional features...
-as this was meant for developers and more techie person there's a tool to** CLONE any website** ...
-yes YOU HEARD IT RIGHT
-it can clone any website, you just have to paste the url in the given box rest it'll take care
+_Quicbot_ is a Python and Flask-based tool/chatbot designed to minimize your research time on Google. It fetches the top 10 results from the most visited sites, providing a quick overview of the information you're seeking. 
 
+### Key Features:
 
-**_Someone_**: Where would it store??
+- **Categorized Searches**: Choose from a set of predefined categories with relevant options tailored to your needs.
+- **Custom Prompts**: Not finding what you need? No problem—enter your own prompt, and Quicbot will handle the rest.
 
-**_Me_**: Hmm in the directory where you cloned my tool... or check you CMD to see that path of it...
+### Additional Features:
 
+For developers and tech enthusiasts, Quicbot includes a **Website Cloning Tool**. Yes, you heard that right! It can clone any website—just paste the URL in the designated box, and Quicbot will take care of the rest.
 
-**How to run it??**
-Well its quite easy
-run the following command in your cmd or terminal
-(required python)
+**_Someone:_** Where would it store the cloned sites?
 
-$pip install -r requirements.txt
+**_Me:_** It will be saved in the directory where you cloned Quicbot. Alternatively, you can check your CMD or terminal for the exact path.
 
-$python app.py
+### How to Run Quicbot
 
+It's simple! Follow these steps in your CMD or terminal (Python required):
 
-and that's it your done 
+1. Install the required packages:
+   ```bash
+   pip install -r requirements.txt
+   ```
 
-**This proj is still under development**
-coded by both
-Myself and Chatgpt
+2. Run the application:
+   ```bash
+   python app.py
+   ```
 
-Any queries please raise a issue here 
-am mostly active here also feel free to contribute.😃
+And that's it—you're all set!
 
-Thank you 
-by 
-127.4.7.8
+**Note:** This project is still under development, collaboratively coded by both myself and ChatGPT.
+
+### Contributions & Queries
+
+If you have any questions or suggestions, please raise an issue here. I'm mostly active on GitHub and would love to see your contributions. 😃
+
+Thank you!
+
+_By:_ **127.4.7.8**
+
